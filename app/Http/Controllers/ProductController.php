@@ -11,11 +11,12 @@ class ProductController extends Controller
     /**
      * Display a listing of products.
      */
-    public function index()
-    {
-        $products = Product::with('category')->get();
-        return view('products.index', compact('products'));
-    }
+   public function index()
+{
+    $products = Product::with('category')->paginate(5);
+    return view('products.index', compact('products'));
+}
+
 
     /**
      * Show the form for creating a new product.
